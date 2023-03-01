@@ -60,7 +60,7 @@ $pdo = null;
 
 
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
