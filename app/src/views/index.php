@@ -2,6 +2,10 @@
 
 date_default_timezone_set("Asia/Tokyo");
 
+function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
+
 $comment_array = array();
 $pdo = null;
 $statment = null;
@@ -80,10 +84,10 @@ $pdo = null;
                     <div class="wrapper">
                         <div class="nameArea">
                             <span>名前：</span>
-                            <p class="username"><?php echo $comment["user_name"]; ?></p>
-                            <time>：<?php echo $comment["postDate"]; ?></time>
+                            <p class="username"><?php echo h($comment["user_name"]); ?></p>
+                            <time>：<?php echo h($comment["postDate"]); ?></time>
                         </div>
-                        <p class="comment"><?php echo $comment["comment"]; ?></p>
+                        <p class="comment"><?php echo h($comment["comment"]); ?></p>
                     </div>
                 </article>
             <?php endforeach; ?>
