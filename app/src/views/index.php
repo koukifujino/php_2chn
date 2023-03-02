@@ -2,9 +2,12 @@
 
 date_default_timezone_set("Asia/Tokyo");
 
-function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+// h()関数の定義例
+function h($string)
+{
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
+
 
 $comment_array = array();
 $pdo = null;
@@ -52,13 +55,16 @@ if (!empty($_POST["submitButton"])) {
     }
 }
 
-// DBからコメントデータを取得する
-$sql = "SELECT `id`, `user_name`, `comment`, `postDate` FROM `bbs_table`";
+//dbからコメント取得
+$sql = "SELECT `id`, `user_name`, `comment`, `postDate` FROM `bbs_table`;";
 $comment_array = $pdo->query($sql);
 
-//DBの接続を閉じる
-$pdo = null;
-
+// クエリの実行に失敗した場合のエラー処理
+if (!$comment_array) {
+    $error_info = $pdo->errorInfo();
+    echo "クエリの実行に失敗しました：{$error_info[2]}";
+    exit;
+}
 
 ?>
 
