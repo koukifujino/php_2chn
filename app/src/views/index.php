@@ -31,12 +31,12 @@ if (!empty($_POST["submitButton"])) {
 
     //名前のチェック
     if (empty($_POST["username"])) {
-        echo "名前を入力してください";
+        echo '<script>alert("名前を入力してください")</script>';
         $error_messages["username"] = "名前を入力してください";
     }
     //コメントのチェック
     if (empty($_POST["comment"])) {
-        echo "コメントを入力してください";
+        echo '<script>alert("コメントを入力して下さい")</script>';
         $error_messages["comment"] = "コメントを入力してください";
     }
 
